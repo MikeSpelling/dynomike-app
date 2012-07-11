@@ -17,7 +17,7 @@ body {
 	font-family: Arial, Helvetica, Verdana, Sans-serif;
 	font-size: 12px;
 	color: #333333;
-	background-color: #D4DAE8;
+	background-color: #3b5998;
 }
 
 h1 {
@@ -55,11 +55,11 @@ li {
 	margin: auto;
 	border-style: solid;
 	border-width: 1px;
+	background-color: #eceff6;
 }
 
 #topbar {
 	height: 50px;
-	background-color: red;
 	padding: 13px 25px;
 	font-family: Tahoma, Arial, Helvetica, Sans-serif;
 }
@@ -79,9 +79,9 @@ li {
 
 #header {
 	height: 150px;
-	background-color: blue;
 	padding-left: 25px;
 	padding-top: 15px;
+	border-bottom: 2px solid #333333;
 }
 #header h1 {
 	
@@ -91,9 +91,6 @@ li {
 	float: right;
 	width: 250px;
 	line-height: 18px;
-	background-color: green;
-}
-#rightbar .padding {
 	padding: 25px;
 }
 #rightbar ul {
@@ -110,15 +107,15 @@ li {
 	color: black;
 }
 #rightbar a:hover{
-	color: #DB6D16;
+	color: #3b5998;
+}
+#rightbar h2 {
+	padding-bottom: 15px;
 }
 
 #content {
 	margin-right: 250px;
 	line-height: 18px;
-	background-color: darkgreen;
-}
-#content .padding {
 	padding: 25px;
 }
 #content h2 {
@@ -136,11 +133,10 @@ li {
 
 #footer {
 	clear: both;
-	background-color: orange;
 	height:70px;
 	font-size: 10px;
 	font-family: Tahoma, Arial, Helvetica, Sans-serif;
-	border-top: 1px solid #EFEFEF;
+	border-top: 2px solid #333333;
 	padding: 13px 25px;
 }
 #footer ul {
