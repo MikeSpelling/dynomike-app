@@ -1,25 +1,35 @@
 <div id="content">
-	<div id="title">
-		<h1>Software Implementation of the Enigma Machine</h1>
-	</div>
+  <div id="title">
+    <h1>Software Implementation of the Enigma Machine</h1>
+  </div>
 
-	<div id="sidebar">
-		<h2>Links</h2>
-		<ul>
-			<li><a href="/">Home</a></li>
-		</ul>
-	</div>
+  <div id="sidebar">
+    <h2>Links</h2>
+    <ul>
+      <li><a href="/">Home</a></li>
+    </ul>
+  </div>
 
-	<div id="main">
-		<%= form_for :post, :url => "enigma" do |f| %>
-		  <p>
-		    <%= f.label :input_text %><br>
-		    <%= f.text_field :input_text %>
-		  </p>
-
-		  <p>
-		    <%= f.submit "Cipher"%>
-		  </p>
-		<% end %>
-	</div>
+  <div id="main">
+    <%= form_for :post, :url => "enigma" do |f| %>
+        <p>
+          Enigma uses a number of pre-defined rotors in a particular configuration. Choose any number of rotors from the predefined rotors 1 to 8.<br/>
+          Rotor numbers: <%= f.text_field :rotor_numbers %><br/>
+          <br/>
+          Each rotor is set to a particular offset letter, enter these letters in order of the rotors.<br/>
+          Rotor offsets: <%= f.text_field :rotor_offsets %><br/>
+          <br/>
+          Enigma uses a single reflector from a choice of 5. Select one.<br/>
+          Reflector number: <%= f.text_field :reflector_number %><br/>
+          <br/>
+          Enigma has a plugboard which can switch particular letters. Input letters to switch in the following format 'A-B,G-Z'.<br/>
+          Plugboard settings: <%= f.text_field :plugboard %><br/>
+          <br/>
+          <br/> Enter text to cipher: <br/>
+          <%= f.text_area :input_text %><br/>
+          <%= f.submit "Cipher" %>
+        </p>
+    <% end %>
+    <%= @output unless @output.nil? %>
+  </div>
 </div>
