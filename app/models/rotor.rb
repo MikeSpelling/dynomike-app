@@ -25,7 +25,7 @@ class Rotor < ActiveRecord::Base
   end
 
   def set_offset(character)
-    @offset = @alphabet.index(character)
+    @offset = @alphabet.index(character.upcase)
   end
 
   private
