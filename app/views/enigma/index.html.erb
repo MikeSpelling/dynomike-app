@@ -1,0 +1,25 @@
+<div id="content">
+	<div id="title">
+		<h1>Software Implementation of the Enigma Machine</h1>
+	</div>
+
+	<div id="sidebar">
+		<h2>Links</h2>
+		<ul>
+			<li><a href="/">Home</a></li>
+		</ul>
+	</div>
+
+	<div id="main">
+		<%= form_for :post, :url => "enigma" do |f| %>
+		  <p>
+		    <%= f.label :input_text %><br>
+		    <%= f.text_field :input_text %>
+		  </p>
+
+		  <p>
+		    <%= f.submit "Cipher"%>
+		  </p>
+		<% end %>
+	</div>
+</div>
