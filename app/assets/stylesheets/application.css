@@ -83,6 +83,7 @@ li {
 	text-decoration: none;
 	text-align: center;
 	color: white;
+	display: block;
 }
 #topbar-content a:hover{
 	color: black;
