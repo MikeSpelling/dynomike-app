@@ -1,14 +1,30 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="topbar">
+        <div id="topbar-content">
+                <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/enigma">Enigma</a></li>
+                        <li><a href="/balls">Applet</a></li>
+                </ul>
+        </div>
+</div>
+
 <div id="container">
   <div id="header">
     <h1>Software Implementation of the Enigma Machine</h1>
   </div>
 
   <div id="rightbar">
-    <h2>Links</h2>
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/balls">Java Applet</a></li>
-    </ul>
+    <h2>How it works</h2>
+    <p>Details about the enigma machine...</p>
   </div>
 
   <div id="content">
@@ -35,9 +51,28 @@
   </div>
 
   <div id="footer">
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/balls">Bouncing Balls</a></li>
-    </ul>
+
+    <div id="footer-right">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/enigma">Enigma</a></li>
+        <li><a href="/balls">Applet</a></li>
+      </ul>
+    </div>
+
+  <div class="g-plusone" data-width="450"></div>
+  <div class="fb-like" data-href="http://dynomike.co.uk/enigma" data-send="false" data-width="450" data-show-faces="false"></div>
+    
   </div>
+
 </div>
+
+<script type="text/javascript">
+  window.___gcfg = {lang: 'en-GB'};
+
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
