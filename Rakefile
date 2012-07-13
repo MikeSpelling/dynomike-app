@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-HelloWorld::Application.load_tasks
+EnigmaApp::Application.load_tasks

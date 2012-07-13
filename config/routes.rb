@@ -1,13 +1,9 @@
 EnigmaApp::Application.routes.draw do
-  get "balls/index"
-
-  get "home/index"
-
-  #get "enigma/index"
-  root :to => 'home#index'
+  get "/" => "home#index"
   get "enigma" => "enigma#index"
-  post "enigma" => "enigma#ciphered"
   get "balls" => "balls#index"
+  post "/" => "home#comment"
+  post "enigma" => "enigma#ciphered"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
