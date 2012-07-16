@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-EnigmaApp::Application.load_tasks
+DynomikeApp::Application.load_tasks

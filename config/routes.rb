@@ -1,4 +1,4 @@
-EnigmaApp::Application.routes.draw do
+DynomikeApp::Application.routes.draw do
   get "/" => "home#index"
   get "enigma" => "enigma#index"
   get "balls" => "balls#index"
