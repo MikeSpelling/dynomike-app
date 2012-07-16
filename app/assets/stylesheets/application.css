@@ -87,8 +87,7 @@ li {
 #container {
 	width: 800px;
 	margin: auto;
-	border-style: solid;
-	border-width: 1px;
+	border: 1px, solid, black;
 	background-color: #ECEFF6;
 	position: relative;
 	top: 40px;
@@ -120,10 +119,7 @@ li {
 	list-style-type: none;
 	margin:0;
 }
-#rightbar li {
-
-}
-#rightbar a{
+#rightbar a {
 	text-decoration: none;
 	display: block;
 	color: black;
@@ -136,6 +132,11 @@ li {
 	padding-bottom: 15px;
 }
 
+#rightbar #twitter a {
+    text-decoration: none;
+    display: inline;
+}
+
 #content {
 	margin-right: 250px;
 	line-height: 18px;
@@ -146,6 +147,21 @@ li {
 }
 #content p {
 	padding-bottom: 15px;
+}
+
+#display-comments {
+    margin: 10px;
+}
+#display-comments h2 {
+}
+    
+.comment {
+    line-height: 5px;
+    padding: 10px;
+    border: 2px groove #333333;
+}
+.comment b {
+    color: gray;
 }
 
 #footer-right {

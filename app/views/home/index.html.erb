@@ -1,90 +1,165 @@
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
 <div id="topbar">
-	<div id="topbar-content">
-		<ul>
-			<li><a href="/">Home</a></li>
-                        <li><a href="/enigma">Enigma</a></li>
-                        <li><a href="/balls">Applet</a></li>
-		</ul>
-	</div>
+  <div id="topbar-content">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/enigma">Enigma</a></li>
+      <li><a href="/balls">Applet</a></li>
+    </ul>
+  </div>
 </div>
 
 <div id="container">
 
-	<div id="header">
-		<h1>DynoMike</h1>
-	</div>
+  <div id="header">
+    <h1>DynoMike</h1>
+  </div>
 
-	<div id="rightbar">
-		<h2>My Projects</h2>
-		<ul>
-			<li><a href="/enigma">Enigma Machine implementation</a></li>
-			<li><a href="/balls">Java Applet</a></li>
-		</ul>
-		<hr/><br/>
-		<h2>Find Me</h2>
-		<ul>
-			<li><a href="https://twitter.com/MikeSpelling">Twitter</a></li>
-			<li><a href="https://www.facebook.com/mike.spelling">Facebook</a></li>
-			<li><a href="http://uk.linkedin.com/in/michaelspelling">LinkedIn</a></li>
-			<li><a href="https://github.com/MikeSpelling">GitHub</a></li>
-		</ul>
-	</div>
+  <div id="rightbar">
+    <h2>My Projects</h2>
+    <ul>
+      <li><a href="/enigma">Enigma Machine implementation</a></li>
+      <li><a href="/balls">Java Applet</a></li>
+    </ul>
+    <hr/>
+    <br/>
 
-	<div id="content">
-		<p>Coming soon...</p>
-		<hr/><br/>
+    <h2>Find Me</h2>
+    <ul>
+      <li><a href="https://twitter.com/MikeSpelling">Twitter</a></li>
+      <li><a href="https://www.facebook.com/mike.spelling">Facebook</a></li>
+      <li><a href="http://uk.linkedin.com/in/michaelspelling">LinkedIn</a></li>
+      <li><a href="https://github.com/MikeSpelling">GitHub</a></li>
+      <li><a href="mailto:mike.spelling@hotmail.co.uk">mike.spelling@hotmail.co.uk</a></li>
+    </ul>
+    <hr/>
+    <br/>
 
-		<div id="display-comments">
-			<h2>Comments</h2>
-			<% unless @comments.nil? %>
-			  <% @comments.each do |comment| %>
-			    <h4> <%= comment.author %> </h4>
-			    <p> <%= comment.text %> </p>
-			    <hr/>
-			  <% end %>
-			<% end %>
-			<br/>
-		</div>
+    <div id="twitter">
+      <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+      <script>
+          new TWTR.Widget({
+              version: 2,
+              type: 'profile',
+              rpp: 4,
+              interval: 30000,
+              width: 'auto',
+              height: 300,
+              theme: {
+                  shell: {
+                      background: '#333333',
+                      color: '#ffffff'
+                  },
+                  tweets: {
+                      background: '#000000',
+                      color: '#ffffff',
+                      links: '#67a7f5'
+                  }
+              },
+              features: {
+                  scrollbar: false,
+                  loop: false,
+                  live: true,
+                  behavior: 'all'
+              }
+          }).render().setUser('MikeSpelling').start();
+      </script>
+    </div>
 
-		<div id="add-comment">
-			<h2>Add a Comment</h2>
-			<%= form_for :post, :url => "/" do |f| %>
-			  <p>Author: <%= f.text_field :author %> <br/></p>		 
-			  <p>Comment:<br/>
-			     <%= f.text_area :text %> </p>
-			  <p> <%= f.submit "Comment" %></p>
-			<% end %>
-		</div>
-	</div>
+  </div>
 
-	<div id="footer">
+  <div id="content">
+    <p>
+      Hi, welcome to my website. I'm Mike Spelling, a trainee developer for the BBC and this is my personal site.
+      Take a look at some of the projects I've been working on in my free time. I'll update these whenever I get the
+      time!
+    </p>
 
-		<div id="footer-right">
-			<a href="https://www.webfaction.com/">
-				<img src="https://www.webfaction.com/images/webfaction-logo.png" alt="Webfaction logo" width="160" height="40" />
-			</a>
-		</div>
-		<div class="g-plusone" data-width="450"></div>
-		<div class="fb-like" data-href="http://dynomike.co.uk" data-send="false" data-width="450" data-show-faces="false"></div>
+    <p>
+      So far I'm working on 2 projects - 'Applet' and 'Enigma' as well as using this website to improve my ruby on rails
+      knowledge and try some CSS (admittedly not great as yet!).
+    </p>
 
-	</div>
+    <p>
+      The first project is a Java applet in which I simply wanted to simulate gravity on 2D
+      ball objects and allow mouse clicks to apply force. It works alright so far although collisions between balls is
+      not perfect yet.
+      Eventually I'll get this into a working game.
+    </p>
+
+    <p>
+      The other project I'm working on is recreating the Enigma machine in software. This was a task I started at the
+      Software Craftsmanship
+      2012 conference with Gavin James and Aidy Lewis. I took the design further - to allow for any number of rotors and
+      added a
+      'plugboard' which allows letters to be switched.
+    </p>
+
+    <p>
+      So have a look around and feel free to leave a comment!
+    </p>
+    <hr/>
+    <br/>
+
+    <div id="display-comments">
+      <h2>Comments</h2>
+      <% unless @comments.nil? %>
+          <% @comments.each do |comment| %>
+              <div class="comment">
+                <p> <%= comment.text %> </p>
+                <b><%= comment.author %> (<%= comment.created_at.day %>th&nbsp<%= comment.created_at.month %>
+                  &nbsp<%= comment.created_at.year %>)</b>
+              </div>
+              <br/>
+          <% end %>
+      <% end %>
+      <br/>
+    </div>
+
+    <div id="add-comment">
+      <h2>Add a Comment</h2>
+      <%= form_for :post, :url => "/" do |f| %>
+          <p>Author: <%= f.text_field :author %> <br/></p>
+
+          <p>Comment:<br/>
+            <%= f.text_area :text %> </p>
+
+          <p> <%= f.submit "Comment" %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="footer">
+
+    <div id="footer-right">
+      <a href="https://www.webfaction.com/">
+        <img src="https://www.webfaction.com/images/webfaction-logo.png" alt="Webfaction logo" width="160" height="40"/>
+      </a>
+    </div>
+    <div class="g-plusone" data-width="450"></div>
+    <div class="fb-like" data-href="http://dynomike.co.uk" data-send="false" data-width="450" data-show-faces="false"></div>
+
+  </div>
 </div>
 
 <script type="text/javascript">
-  window.___gcfg = {lang: 'en-GB'};
+    window.___gcfg = {lang: 'en-GB'};
 
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
+    (function() {
+        var po = document.createElement('script');
+        po.type = 'text/javascript';
+        po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(po, s);
+    })();
 </script>
