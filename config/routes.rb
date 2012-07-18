@@ -1,13 +1,15 @@
 DynomikeApp::Application.routes.draw do
-  get "blog/index"
 
   get "/" => "home#index"
   get "enigma" => "enigma#index"
   get "balls" => "balls#index"
   get "blog" => "blog#index"
+
   post "/" => "home#comment"
   post "enigma" => "enigma#ciphered"
   post "blog" => "blog#post"
+  
+  delete "blog/:id" => "blog#destroy"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

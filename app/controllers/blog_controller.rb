@@ -15,4 +15,12 @@ class BlogController < ApplicationController
 
     render :action => 'index'
   end
+
+  def destroy
+    @blog = Blog.find(params[:id])
+    @blog.destroy
+    @blogs = Blog.all
+
+    redirect_to :action => 'index'
+  end
 end

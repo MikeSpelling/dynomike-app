@@ -44,6 +44,7 @@
               <div id="blog-<%= blog.id %>">
                 <h2><%= blog.title %></h2>
                 <p><%= blog.text %></p>
+                <%= link_to 'Destroy', { :action => :destroy, :id => blog.id }, :method => :delete, :confirm => 'Are you sure?' %>
               </div>
               <br/>
           <% end %>
@@ -53,7 +54,7 @@
 
     <div id="new-blog">
       <h2>New Blog</h2>
-      <%= form_for :post, :url => "blog" do |f| %>
+      <%= form_for :post, :url => "/blog" do |f| %>
           <p>
             Title: <%= f.text_field :title %><br/>
             Password: <%= f.text_field :password %><br/>
