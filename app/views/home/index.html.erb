@@ -117,7 +117,7 @@
       <% unless @comments.nil? %>
           <% @comments.each do |comment| %>
               <div class="comment">
-                <p> <%= h(comment.text).gsub(/\n/, '<br/>').html_safe %> </p>
+                <p> <%= comment.text.gsub(/\n/, '<br/>').html_safe %> </p>
                 <a href="/comment/<%= comment.id %>" data-method="delete" rel="nofollow">Delete</a>
                 <b><%= comment.author %> (<%= comment.created_at.day %>th&nbsp<%= comment.created_at.month %>
                   &nbsp<%= comment.created_at.year %>)</b><br/>

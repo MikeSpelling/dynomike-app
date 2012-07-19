@@ -44,7 +44,7 @@
           <% @blogs.each do |blog| %>
               <div class="blog" id="blog-<%= blog.id %>">
                 <h2><%= blog.title %></h2>
-                <p><%= h(blog.text).gsub(/\n/, '<br/>').html_safe %></p>
+                <p><%= blog.text.gsub(/\n/, '<br/>').html_safe %></p>
 		        <a href="/blog/<%= blog.id %>" data-method="delete" rel="nofollow">Delete</a>
               </div>
               <br/>
