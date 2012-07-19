@@ -10,6 +10,7 @@ DynomikeApp::Application.routes.draw do
   post "blog" => "blog#post"
   
   delete "blog/:id" => "blog#destroy"
+  delete "comment/:id" => "home#destroy"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

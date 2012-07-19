@@ -14,6 +14,7 @@
       <li><a href="/">Home</a></li>
       <li><a href="/enigma">Enigma</a></li>
       <li><a href="/balls">Applet</a></li>
+      <li><a href="/blog">Blog</a></li>
     </ul>
   </div>
 </div>
@@ -29,6 +30,7 @@
     <ul>
       <li><a href="/enigma">Enigma Machine implementation</a></li>
       <li><a href="/balls">Java Applet</a></li>
+      <li><a href="/blog">My Blog</a></li>
     </ul>
     <hr/>
     <br/>
@@ -115,9 +117,10 @@
       <% unless @comments.nil? %>
           <% @comments.each do |comment| %>
               <div class="comment">
-                <p> <%= comment.text %> </p>
+                <p> <%= h(comment.text).gsub(/\n/, '<br/>').html_safe %> </p>
+                <a href="/comment/<%= comment.id %>" data-method="delete" rel="nofollow">Delete</a>
                 <b><%= comment.author %> (<%= comment.created_at.day %>th&nbsp<%= comment.created_at.month %>
-                  &nbsp<%= comment.created_at.year %>)</b>
+                  &nbsp<%= comment.created_at.year %>)</b><br/>
               </div>
               <br/>
           <% end %>

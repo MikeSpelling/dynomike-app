@@ -155,21 +155,36 @@ li {
 }
     
 .comment {
-    line-height: 5px;
+    line-height: 15px;
     padding: 10px;
-    border: 2px groove #333333;
+    border: 1px groove #333333;
 }
 .comment b {
     color: gray;
 }
+.comment a {
+    color: gray;
+    float: right;
+    font-size: 10px;
+}
 
-#display-blogs h2 {
-    font-size: 24px;
+#display-blogs {
+    margin: 10px;
+}
+
+.blog {
+    line-height: 15px;
+    padding: 10px;
+    border: 1px groove #333333;
+}
+.blog a {
+    color: gray;
+    font-size: 10px;
 }
 
 #new-blog h2 {
     padding-top: 8px;
-    border-top:  2px groove #333333;
+    border-top:  1px groove #333333;
 }
 
 #footer-right {
