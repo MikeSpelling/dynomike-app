@@ -119,8 +119,8 @@
               <div class="comment">
                 <p> <%= comment.text.gsub(/\n/, '<br/>').html_safe %> </p>
                 <a href="/comment/<%= comment.id %>" data-method="delete" rel="nofollow">Delete</a>
-                <b><%= comment.author %> (<%= comment.created_at.day %>th&nbsp<%= comment.created_at.month %>
-                  &nbsp<%= comment.created_at.year %>)</b><br/>
+                <span class="comment-footer"><%= comment.author %> (<%= comment.created_at.day %>th&nbsp<%= comment.created_at.month %>
+                  &nbsp<%= comment.created_at.year %>)</span><br/>
               </div>
               <br/>
           <% end %>
