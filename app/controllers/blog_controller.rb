@@ -1,6 +1,6 @@
 class BlogController < ApplicationController
 
-  caches_page :index, :by_id
+  caches_page :index, :individual_blog
   before_filter :authenticate, :except => [:index]
 
   def authenticate
