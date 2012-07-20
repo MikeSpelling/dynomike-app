@@ -8,6 +8,19 @@ DynomikeApp::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+memcache_options = {
+  :c_threshold => 10_000,
+  :compression => false,
+  :debug => false,
+  :readonly => false,
+  :urlencode => false,
+  :ttl => 300,
+  :namespace => 'dynomike',
+  :disabled => false
+}
+
+CACHE = MemCache.new memcache_options
+
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
 

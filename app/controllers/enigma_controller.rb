@@ -1,4 +1,6 @@
 class EnigmaController < ApplicationController
+  caches_page :index
+
   def index
   end
 
@@ -10,6 +12,8 @@ class EnigmaController < ApplicationController
     input_text = params[:post][:input_text]
     enigma = EnigmaMachine.new(rotor_numbers, rotor_offsets, reflector_number, plugboard)
     @output = enigma.cipher(input_text)
+
+    expire_page :action => :index
     render :action => 'index'
   end
 end

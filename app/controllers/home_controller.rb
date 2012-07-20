@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
 
+  caches_page :index
   before_filter :authenticate, :except => [:index, :comment]
 
   def authenticate
@@ -17,6 +18,7 @@ class HomeController < ApplicationController
     @comment.save
     @comments = Comment.all
 
+    expire_page :action => :index
     render :action => 'index'
   end
 
@@ -25,6 +27,7 @@ class HomeController < ApplicationController
     @comment.destroy
     @comment = Comment.all
 
+    expire_page :action => :index
     redirect_to :action => 'index'
   end
 

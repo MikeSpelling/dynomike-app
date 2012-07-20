@@ -1,5 +1,6 @@
 class BlogController < ApplicationController
 
+  caches_page :index 
   before_filter :authenticate, :except => [:index]
 
   def authenticate
@@ -18,6 +19,7 @@ class BlogController < ApplicationController
     @blog.save
     @blogs = Blog.all
 
+    expire_page :action => :index
     render :action => 'index'
   end
 
@@ -26,6 +28,7 @@ class BlogController < ApplicationController
     @blog.destroy
     @blogs = Blog.all
 
+    expire_page :action => :index
     redirect_to :action => 'index'
   end
   
