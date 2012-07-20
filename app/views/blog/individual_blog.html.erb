@@ -20,39 +20,33 @@
 </div>
 
 <div id="container">
+
   <div id="header">
-    <h1><a href="/enigma">Software Implementation of the Enigma Machine</a></h1>
+    <h1><a href="/blog">Blogs</a></h1>
   </div>
 
   <div id="rightbar">
-    <h2>How it works</h2>
-
-    <p>Details about the enigma machine...</p>
+    <h2>My Blogs</h2>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/enigma">Enigma</a></li>
+      <li><a href="/balls">Applet</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+    <hr/>
+    <br/>
   </div>
 
   <div id="content">
-    <%= form_for :post, :url => "enigma" do |f| %>
-        <p>
-          Enigma uses a number of pre-defined rotors in a particular configuration. Choose any number of rotors from the
-          predefined rotors 1 to 8.<br/>
-          Rotor numbers: <%= f.text_field :rotor_numbers %><br/>
-          <br/>
-          Each rotor is set to a particular offset letter, enter these letters in order of the rotors.<br/>
-          Rotor offsets: <%= f.text_field :rotor_offsets %><br/>
-          <br/>
-          Enigma uses a single reflector from a choice of 5. Select one.<br/>
-          Reflector number: <%= f.text_field :reflector_number %><br/>
-          <br/>
-          Enigma has a plugboard which can switch particular letters. Input letters to switch in the following format
-          'A-B,G-Z'.<br/>
-          Plugboard settings: <%= f.text_field :plugboard %><br/>
-          <br/>
-          <br/> Enter text to cipher: <br/>
-          <%= f.text_area :input_text %><br/>
-          <%= f.submit "Cipher" %>
-        </p>
-    <% end %>
-    <%= @output unless @output.nil? %>
+    <div id="display-individual-blog">
+      <h1><%= @blog.title %></h1>
+
+      <p><%= @blog.text.gsub(/\n/, '<br/>').html_safe %></p>
+      <a class="right-float" href="/blog/<%= @blog.id %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>
+      <a href="/blog/<%= @blog.id %>/edit">Edit</a>
+      <br/>
+    </div>
+
   </div>
 
   <div id="footer">

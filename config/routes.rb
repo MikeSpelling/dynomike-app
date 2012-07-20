@@ -4,10 +4,13 @@ DynomikeApp::Application.routes.draw do
   get "enigma" => "enigma#index"
   get "balls" => "balls#index"
   get "blog" => "blog#index"
+  get "blog/:id" => "blog#individual_blog"
+  get "blog/:id/edit" => "blog#edit_blog"
 
   post "/" => "home#comment"
   post "enigma" => "enigma#ciphered"
   post "blog" => "blog#post"
+  post "blog/:id" => "blog#post_edit"
   
   delete "blog/:id" => "blog#destroy"
   delete "comment/:id" => "home#destroy"

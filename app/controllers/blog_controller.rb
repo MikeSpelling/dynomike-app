@@ -1,6 +1,6 @@
 class BlogController < ApplicationController
 
-  caches_page :index 
+  caches_page :index, :by_id
   before_filter :authenticate, :except => [:index]
 
   def authenticate
@@ -11,6 +11,24 @@ class BlogController < ApplicationController
 
   def index
     @blogs = Blog.all
+  end
+
+  def individual_blog
+    @blog = Blog.find(params[:id])
+  end
+
+  def edit_blog
+    @blog = Blog.find(params[:id])
+  end
+
+  def post_edit
+    @blog = Blog.find(params[:id])
+
+    if @blog.update_attributes(params[:post])
+      redirect_to :action => :individual_blog, :id => @blog.id
+    else
+      render 'edit_blog'
+    end
   end
 
   def post
@@ -31,5 +49,5 @@ class BlogController < ApplicationController
     expire_page :action => :index
     redirect_to :action => 'index'
   end
-  
+
 end
