@@ -10,16 +10,16 @@ class HomeController < ApplicationController
   end
 
   def index
+    @num_comments = 10
     @comments = Comment.all
   end
 
   def comment
     @comment = Comment.new(params[:post])
     @comment.save
-    @comments = Comment.all
 
     expire_page :action => :index
-    render :action => 'index'
+    redirect_to :action => 'index'
   end
 
   def destroy

@@ -29,7 +29,8 @@
     <h2>My Blogs</h2>
     <ul>
       <% unless @blogs.nil? %>
-          <% @blogs.each do |blog| %>
+          <% @blogs.size.times do |index| %>
+              <% blog = @blogs[@blogs.size-1-index] %>
               <li><a href="#blog-<%= blog.id %>"><%= blog.title %></a></li>
           <% end %>
       <% end %>
@@ -41,12 +42,14 @@
   <div id="content">
     <div id="display-blogs">
       <% unless @blogs.nil? %>
-          <% @blogs.each do |blog| %>
+          <% @blogs.size.times do |index| %>
+              <% blog = @blogs[@blogs.size-1-index] %>
               <div class="blog" id="blog-<%= blog.id %>">
                 <h2><a href="/blog/<%= blog.id %>"><%= blog.title %></a></h2>
 
                 <p><%= blog.text.gsub(/\n/, '<br/>').html_safe %></p>
-                <a href="/blog/<%= blog.id %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>
+                <a class="right-float" href="/blog/<%= blog.id %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>
+                <a href="/blog/<%= blog.id %>/edit">Edit</a>
               </div>
               <br/>
           <% end %>
@@ -63,10 +66,11 @@
               <% end %>
           <% end %>
           <p>
-            Title: <%= f.text_field :title %><br/>
-            <br/> Blog: <br/>
-            <%= f.text_area :text %><br/>
-            <%= f.submit "Post" %>
+            Title: <input id="post_title" name="post[title]" size="30" type="text"/><br/>
+            <br/>
+            Blog: <br/>
+            <textarea cols="60" id="post_text" name="post[text]" rows="20"></textarea><br/>
+            <input name="commit" type="submit" value="Submit Blog"/>
           </p>
       <% end %>
     </div>

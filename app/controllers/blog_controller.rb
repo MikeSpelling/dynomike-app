@@ -24,21 +24,17 @@ class BlogController < ApplicationController
   def post_edit
     @blog = Blog.find(params[:id])
 
-    if @blog.update_attributes(params[:post])
-      redirect_to :action => :individual_blog, :id => @blog.id
-    else
-      render 'edit_blog'
-    end
+    @blog.update_attributes(params[:post])
+    redirect_to :action => :individual_blog, :id => @blog.id
   end
 
   def post
     blog_post = {:title => params[:post][:title], :text => params[:post][:text]}
     @blog = Blog.new(blog_post)
     @blog.save
-    @blogs = Blog.all
 
     expire_page :action => :index
-    render :action => 'index'
+    redirect_to :action => 'index'
   end
 
   def destroy

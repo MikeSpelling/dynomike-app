@@ -48,9 +48,11 @@
               <% end %>
           <% end %>
           <p>
-            <%= hidden_field_tag(:title, @blog.title) %>
-            <%= f.text_area :text, :value => @blog.text %><br/>
-            <%= f.submit "Post" %>
+            Title: <input id="post_title" name="post[title]" size="30" type="text" value="<%= @blog.title %>" /><br/>
+            <br/>
+            Blog: <br/>
+            <textarea cols="60" id="post_text" name="post[text]" rows="20"><%= @blog.text %></textarea><br/>
+            <input name="commit" type="submit" value="Submit Edit" />
           </p>
       <% end %>
     </div>

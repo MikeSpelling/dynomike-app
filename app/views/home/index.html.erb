@@ -115,7 +115,8 @@
     <div id="display-comments">
       <h2>Comments</h2>
       <% unless @comments.nil? %>
-          <% @comments.each do |comment| %>
+          <% @num_comments.times do |index| %>
+              <% comment = @comments[@comments.size-1-index] %>
               <div class="comment">
                 <p> <%= comment.text.gsub("\n", "<br/>").html_safe %> </p>
                 <a href="/comment/<%= comment.id %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>
