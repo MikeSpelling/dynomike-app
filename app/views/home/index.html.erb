@@ -119,9 +119,7 @@
               <div class="comment">
                 <p> <%= comment.text.gsub("\n", "<br/>").html_safe %> </p>
                 <a href="/comment/<%= comment.id %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>
-                <span class="comment-footer"><%= comment.author %> (<%= comment.created_at.day %>
-                  th&nbsp<%= comment.created_at.month %>
-                  &nbsp<%= comment.created_at.year %>)</span><br/>
+                <span class="comment-footer"><%= comment.author %> (<%= comment.created_at.day %>th <%= comment.created_at.month %> <%= comment.created_at.year %>)</span><br/>
               </div>
               <br/>
           <% end %>
