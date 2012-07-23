@@ -37,6 +37,8 @@ class BlogController < ApplicationController
     if @blog.errors.any?
       redirect_to :action => :edit_blog, :id => @blog.id, :error => @blog.errors.full_messages.first, :title => params[:post][:title], :text => params[:post][:text]
     else
+      expire_page :action => :index
+      expire_page :action => :individual_blog, :id => @blog.id
       redirect_to :action => :individual_blog, :id => @blog.id
     end
   end
