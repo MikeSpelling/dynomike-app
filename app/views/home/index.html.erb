@@ -116,8 +116,9 @@
       <h2>Comments</h2>
       <% unless @comments.nil? %>
           <% @num_comments.times do |index| %>
-              <% comment = @comments[@comments.size-1-index] %>
-              <% unless comment.nil? %>
+              <% inverse_index = @comments.size-1-index %>
+              <% unless inverse_index < 0 %>
+                <% comment = @comments[inverse_index] %>
                   <div class="comment">
                     <p> <%= comment.text.gsub("\n", "<br/>").html_safe %> </p>
                     <a href="/comment/<%= comment.id %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>
