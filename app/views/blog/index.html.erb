@@ -58,20 +58,8 @@
     </div>
 
     <div id="new-blog">
-      <h2>New Blog</h2>
       <%= form_for :post, :url => "/blog" do |f| %>
-          <% unless @blog.nil? %>
-              <% if @blog.errors.any? %>
-                  <script type="text/javascript">alert("<%= @blog.errors.full_messages.first %>");</script>
-              <% end %>
-          <% end %>
-          <p>
-            Title: <input id="post_title" name="post[title]" size="30" type="text"/><br/>
-            <br/>
-            Blog: <br/>
-            <textarea cols="60" id="post_text" name="post[text]" rows="20"></textarea><br/>
-            <input name="commit" type="submit" value="Submit Blog"/>
-          </p>
+          <input name="commit" type="submit" value="New Blog"/>
       <% end %>
     </div>
 

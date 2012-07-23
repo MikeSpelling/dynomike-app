@@ -40,18 +40,16 @@
   <div id="content">
 
     <div id="edit-blog">
-      <h2><a href="/blog/<%= @blog.id %>"><%= @blog.title %></a></h2>
-      <%= form_for :post, :url => "/blog/#{@blog.id}" do |f| %>
-          <% unless @blog.nil? %>
-              <% if @blog.errors.any? %>
-                  <script type="text/javascript">alert("<%= @blog.errors.full_messages.first %>");</script>
-              <% end %>
+      <h2><a href="/blog/<%= @id %>"><%= @title %></a></h2>
+      <%= form_for :post, :url => "/blog/#{@id}" do |f| %>
+          <% unless @error.nil? %>
+            <script type="text/javascript">alert("<%= @error %>");</script>
           <% end %>
           <p>
-            Title: <input id="post_title" name="post[title]" size="30" type="text" value="<%= @blog.title %>" /><br/>
+            Title: <input id="post_title" name="post[title]" size="30" type="text" value="<%= @title %>" /><br/>
             <br/>
             Blog: <br/>
-            <textarea cols="60" id="post_text" name="post[text]" rows="20"><%= @blog.text %></textarea><br/>
+            <textarea cols="60" id="post_text" name="post[text]" rows="20"><%= @text %></textarea><br/>
             <input name="commit" type="submit" value="Submit Edit" />
           </p>
       <% end %>
