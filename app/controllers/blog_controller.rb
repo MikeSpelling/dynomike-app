@@ -11,6 +11,7 @@ class BlogController < ApplicationController
 
   def index
     @blogs = Blog.all
+    @blogs.sort!{|x,y| y.updated_at <=> x.updated_at }
   end
 
   def individual_blog

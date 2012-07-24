@@ -29,8 +29,7 @@
     <h2>My Blogs</h2>
     <ul>
       <% unless @blogs.nil? %>
-          <% @blogs.size.times do |index| %>
-              <% blog = @blogs[@blogs.size-1-index] %>
+          <% @blogs.each do |blog| %>
               <li><a href="#blog-<%= blog.id %>"><%= blog.title %></a></li>
           <% end %>
       <% end %>
@@ -42,10 +41,10 @@
   <div id="content">
     <div id="display-blogs">
       <% unless @blogs.nil? %>
-          <% @blogs.size.times do |index| %>
-              <% blog = @blogs[@blogs.size-1-index] %>
+          <% @blogs.each do |blog| %>
               <div class="blog" id="blog-<%= blog.id %>">
-                <h2><a href="/blog/<%= blog.id %>"><%= blog.title %></a><span class="right-float"><%= blog.created_at.day %>th <%= blog.created_at.month %> <%= blog.created_at.year %></span></h2>
+                <h2>
+                  <a href="/blog/<%= blog.id %>"><%= blog.title %></a><span class="right-float"><%= blog.updated_at.strftime("#{blog.updated_at.day.ordinalize} %B  %Y ") %></span></h2>
 
                 <p><%= blog.text.gsub(/\n/, '<br/>').html_safe %></p>
                 <a class="right-float" href="/blog/<%= blog.id %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>

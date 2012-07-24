@@ -10,8 +10,11 @@ class HomeController < ApplicationController
   end
 
   def index
-    @num_comments = 10
     @comments = Comment.all
+
+    num_comments = 20
+    num_comments = @comments.size if num_comments > @comments.size
+    @comments = @comments.reverse[0..num_comments-1] unless @comments.nil?
   end
 
   def comment
