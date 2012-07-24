@@ -28,10 +28,11 @@
   <div id="rightbar">
     <h2>My Blogs</h2>
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/enigma">Enigma</a></li>
-      <li><a href="/balls">Applet</a></li>
-      <li><a href="/blog">Blog</a></li>
+      <% unless @blogs.nil? %>
+          <% @blogs.each do |blog| %>
+              <li><a href="#blog-<%= blog.id %>"><%= blog.title %></a></li>
+          <% end %>
+      <% end %>
     </ul>
     <hr/>
     <br/>

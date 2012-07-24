@@ -15,6 +15,7 @@ class BlogController < ApplicationController
   end
 
   def individual_blog
+    @blogs = Blog.all
     @blog = Blog.find(params[:id])
 
     @comments = Comment.all
