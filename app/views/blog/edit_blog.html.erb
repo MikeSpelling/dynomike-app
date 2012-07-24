@@ -46,10 +46,10 @@
             <script type="text/javascript">alert("<%= @error %>");</script>
           <% end %>
           <p>
-            Title: <input id="post_title" name="post[title]" size="30" type="text" value="<%= @title %>" /><br/>
+            Title: <input id="post_title" name="post[title]" size="80" type="text" value="<%= @title %>" /><br/>
             <br/>
-            Blog: <br/>
-            <textarea cols="60" id="post_text" name="post[text]" rows="20"><%= @text %></textarea><br/>
+            Blog:
+            <textarea cols="62" id="post_text" name="post[text]" rows="50"><%= @text %></textarea><br/>
             <input name="commit" type="submit" value="Submit Edit" />
           </p>
       <% end %>

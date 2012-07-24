@@ -134,12 +134,12 @@
                   <script type="text/javascript">alert("<%= @comment.errors.full_messages.first %>");</script>
               <% end %>
           <% end %>
-          <p>Author: <%= f.text_field :author %> <br/></p>
+          <p>Author: <input id="post_author" name="post[author]" size="81" type="text"/> <br/></p>
 
           <p>Comment:<br/>
-            <%= f.text_area :text %> </p>
+            <textarea cols="65" id="post_text" name="post[text]" rows="8"></textarea></p>
 
-          <p> <%= f.submit "Comment" %></p>
+          <p><input name="commit" type="submit" value="Comment" /></p>
       <% end %>
     </div>
   </div>
