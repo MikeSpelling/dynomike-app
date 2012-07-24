@@ -1,7 +1,7 @@
 class BlogController < ApplicationController
 
   caches_page :index, :individual_blog
-  before_filter :authenticate, :except => [:index]
+  before_filter :authenticate, :except => [:index, :individual_blog]
 
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
