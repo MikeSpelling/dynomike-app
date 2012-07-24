@@ -59,6 +59,7 @@ class BlogController < ApplicationController
     @blogs = Blog.all
 
     expire_page :action => :index
+    expire_page :action => :individual_blog, :id => params[:id]
     redirect_to :action => 'index'
   end
 
