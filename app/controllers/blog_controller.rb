@@ -1,7 +1,7 @@
 class BlogController < ApplicationController
 
   caches_page :index, :individual_blog
-  before_filter :authenticate, :except => [:index, :individual_blog]
+  before_filter :authenticate, :except => [:index, :individual_blog, :post_comment]
 
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
@@ -11,11 +11,24 @@ class BlogController < ApplicationController
 
   def index
     @blogs = Blog.all
-    @blogs.sort!{|x,y| y.updated_at <=> x.updated_at }
+    @blogs.sort! { |x, y| y.updated_at <=> x.updated_at }
   end
 
   def individual_blog
     @blog = Blog.find(params[:id])
+
+    @comments = Comment.all
+    @comments.select! { |comment| comment.blog_id == @blog.id }
+
+    num_comments = 20
+    num_comments = @comments.size if num_comments > @comments.size
+    @comments = @comments.reverse[0..num_comments-1] unless @comments.nil?
+
+    @error = params[:error]
+    if @error
+      @comment_author = params[:author]
+      @comment_text = params[:text]
+    end
   end
 
   def edit_blog
@@ -61,6 +74,27 @@ class BlogController < ApplicationController
     expire_page :action => :index
     expire_page :action => :individual_blog, :id => params[:id]
     redirect_to :action => 'index'
+  end
+
+  def post_comment
+    @comment = Comment.new(params[:post])
+    @comment.save
+
+    if @comment.errors.any?
+      redirect_to :action => :individual_blog, :id => params[:id], :error => @comment.errors.full_messages.first, :author => params[:post][:author], :text => params[:post][:text]
+    else
+      expire_page :action => :individual_blog, :id => params[:id]
+      redirect_to :action => :individual_blog, :id => params[:id]
+    end
+  end
+
+  def destroy_comment
+    @comment = Comment.find(params[:comment_id])
+    @comment.destroy
+    @comment = Comment.all
+
+    expire_page :action => :individual_blog, :id => params[:blog_id]
+    redirect_to :action => :individual_blog, :id => params[:blog_id]
   end
 
 end

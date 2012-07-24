@@ -11,9 +11,11 @@ DynomikeApp::Application.routes.draw do
   post "enigma" => "enigma#ciphered"
   post "blog" => "blog#new_blog"
   post "blog/:id" => "blog#post_edit"
+  post "blog/:id/comment" => "blog#post_comment"
   
   delete "blog/:id" => "blog#destroy"
-  delete "comment/:id" => "home#destroy"
+  delete "home-comment/:id" => "home#destroy"
+  delete "comment/:comment_id/:blog_id" => "blog#destroy_comment"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

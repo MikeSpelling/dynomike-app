@@ -117,10 +117,10 @@
       <% @comments.each do |comment| %>
           <div class="comment">
             <p> <%= comment.text.gsub("\n", "<br/>").html_safe %> </p>
-            <a href="/comment/<%= comment.id %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>
+            <a href="/home-comment/<%= comment.id %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>
             <span class="comment-footer"><%= comment.author %>
               (<%= comment.created_at.strftime("#{comment.created_at.day.ordinalize} %B  %Y ") %>)</span><br/>
-          </div>
+          </div> 
           <br/>
       <% end %>
       <br/>
@@ -137,7 +137,7 @@
           <p>Author: <input id="post_author" name="post[author]" size="81" type="text"/> <br/></p>
 
           <p>Comment:<br/>
-            <textarea cols="65" id="post_text" name="post[text]" rows="8"></textarea></p>
+            <textarea cols="63" id="post_text" name="post[text]" rows="8"></textarea></p>
 
           <p><input name="commit" type="submit" value="Comment" /></p>
       <% end %>

@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :author, :text
+  attr_accessible :author, :text, :blog_id
+  belongs_to :blog
 
   validates :author, :presence => true
   validates :text, :presence => true,

@@ -11,6 +11,7 @@ class HomeController < ApplicationController
 
   def index
     @comments = Comment.all
+    @comments.select!{|comment| comment.blog_id == nil}
 
     num_comments = 20
     num_comments = @comments.size if num_comments > @comments.size
