@@ -30,19 +30,16 @@ class EnigmaController < ApplicationController
 
   def random
     num_rotors = rand(0..7)
-    rotor_numbers = ""
-    Array(1..8).shuffle[0..num_rotors].map{|item| rotor_numbers << item.to_s}
-    rotor_offsets = ""
-    ("A".."Z").to_a.shuffle[0..num_rotors].map{|item| rotor_offsets << item}
+    rotor_numbers = Array(1..8).shuffle[0..num_rotors].join
+    rotor_offsets = (0...num_rotors).map { ("A".."Z").to_a.shuffle[0] }.join
     reflector_number = rand(1..5)
-    random_alphabet = ("A".."Z").to_a.shuffle
-    plugboard = ""
-    offset = 0
-    rand(0..10).times do |index|
-      plugboard = "#{random_alphabet[index+offset]}-#{random_alphabet[index+offset+1]},#{plugboard}"
-      offset += 1
+
+    random_alphabet = ("A".."Z").to_a.shuffle[0..rand(0..25)]
+    if random_alphabet.size.even?
+      plugboard = random_alphabet.each_slice(2).to_a.map { |sub_array| sub_array.join("-") }.join(",")
+    else
+      plugboard = random_alphabet[0..-2].each_slice(2).to_a.map { |sub_array| sub_array.join("-") }.join(",")
     end
-    plugboard = plugboard[0..-2] #Remove trailing comma
 
     redirect_to :action => 'index', :rotor_numbers => rotor_numbers, :rotor_offsets => rotor_offsets, :reflector_number => reflector_number, :plugboard => plugboard
   end
