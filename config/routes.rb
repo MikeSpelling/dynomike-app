@@ -9,6 +9,8 @@ DynomikeApp::Application.routes.draw do
 
   post "/" => "home#comment"
   post "enigma" => "enigma#ciphered"
+  post "enigma/random" => "enigma#random"
+  post "enigma/load" => "enigma#load_settings"
   post "blog" => "blog#new_blog"
   post "blog/:id" => "blog#post_edit"
   post "blog/:id/comment" => "blog#post_comment"
