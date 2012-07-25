@@ -1,5 +1,4 @@
 class EnigmaController < ApplicationController
-  caches_page :index
 
   def index
     @rotor_numbers = params[:rotor_numbers].nil? ? nil : params[:rotor_numbers]
@@ -26,7 +25,6 @@ class EnigmaController < ApplicationController
     @cipher_count = @cipher_counter[:total]+1
     @cipher_counter.update_attributes(:total => @cipher_count)
 
-    expire_page :action => :index
     render :action => 'index'
   end
 
@@ -46,7 +44,6 @@ class EnigmaController < ApplicationController
     end
     plugboard = plugboard[0..-2] #Remove trailing comma
 
-    expire_page :action => :index
     redirect_to :action => 'index', :rotor_numbers => rotor_numbers, :rotor_offsets => rotor_offsets, :reflector_number => reflector_number, :plugboard => plugboard
   end
 
@@ -57,7 +54,6 @@ class EnigmaController < ApplicationController
     reflector_number = settings[2]
     plugboard = settings[3]
 
-    expire_page :action => :index
     redirect_to :action => 'index', :rotor_numbers => rotor_numbers, :rotor_offsets => rotor_offsets, :reflector_number => reflector_number, :plugboard => plugboard
   end
 end
