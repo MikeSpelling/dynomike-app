@@ -30,7 +30,7 @@ class EnigmaController < ApplicationController
 
   def random
     num_rotors = rand(0..7)
-    rotor_numbers = Array(1..8).shuffle[0..num_rotors].join
+    rotor_numbers = Array(1..8).shuffle[0...num_rotors].join
     rotor_offsets = (0...num_rotors).map { ("A".."Z").to_a.shuffle[0] }.join
     reflector_number = rand(1..5)
 
