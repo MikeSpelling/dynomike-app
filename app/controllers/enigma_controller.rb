@@ -36,9 +36,9 @@ class EnigmaController < ApplicationController
 
     random_alphabet = ("A".."Z").to_a.shuffle[0..rand(0..25)]
     if random_alphabet.size.even?
-      plugboard = random_alphabet.each_slice(2).to_a.map { |sub_array| sub_array.join("-") }.join(",")
+      plugboard = random_alphabet.each_slice(2).to_a.map { |sub_array| sub_array.join("") }.join(",")
     else
-      plugboard = random_alphabet[0..-2].each_slice(2).to_a.map { |sub_array| sub_array.join("-") }.join(",")
+      plugboard = random_alphabet[0..-2].each_slice(2).to_a.map { |sub_array| sub_array.join("") }.join(",")
     end
 
     redirect_to :action => 'index', :rotor_numbers => rotor_numbers, :rotor_offsets => rotor_offsets, :reflector_number => reflector_number, :plugboard => plugboard

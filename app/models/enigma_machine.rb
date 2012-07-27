@@ -43,12 +43,12 @@ class EnigmaMachine < ActiveRecord::Base
     @reflector = @all_reflectors[reflector_number-1]
   end
 
-  def set_plugboard(settings) # Settings in format A-B,C-D to swap A with B and C with D
+  def set_plugboard(settings) # Settings in format AB,CD to swap A with B and C with D
     @plugboard = {"A"=>"A", "B"=>"B", "C"=>"C", "D"=>"D", "E"=>"E", "F"=>"F", "G"=>"G", "H"=>"H", "I"=>"I", "J"=>"J", "K"=>"K", "L"=>"L", "M"=>"M",
     "N"=>"N", "O"=>"O", "P"=>"P", "Q"=>"Q", "R"=>"R", "S"=>"S", "T"=>"T", "U"=>"U", "V"=>"V", "W"=>"W", "X"=>"X", "Y"=>"Y", "Z"=>"Z"}
 
     settings.split(",").each do |pair|
-      chars = pair.split("-")
+      chars = pair.split("")
       @plugboard[chars[0].upcase] = chars[1].upcase
       @plugboard[chars[1].upcase] = chars[0].upcase
     end
