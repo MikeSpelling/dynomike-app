@@ -18,7 +18,7 @@ class EnigmaMachine < ActiveRecord::Base
     reflector5 = Rotor.new("RDOBJNTKVEHMLFCWZAXGYIPSUQ")
     @all_reflectors = [reflector1, reflector2, reflector3, reflector4, reflector5]
 
-    @reflector = @all_reflectors[reflector_number-1]
+    set_reflector(reflector_number)
     set_rotors(rotor_numbers, offsets)
     set_plugboard(plugboard)
   end
