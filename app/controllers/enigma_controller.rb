@@ -30,26 +30,26 @@ class EnigmaController < ApplicationController
 
   def random
     num_rotors = rand(1..8)
-    rotor_numbers = Array(1..8).shuffle[0...num_rotors].join
-    rotor_offsets = (0...num_rotors).map { ("A".."Z").to_a.shuffle[0] }.join
-    reflector_number = rand(1..5)
+    @rotor_numbers = Array(1..8).shuffle[0...num_rotors].join
+    @rotor_offsets = (0...num_rotors).map { ("A".."Z").to_a.shuffle[0] }.join
+    @reflector_number = rand(1..5).to_s
 
     random_alphabet = ("A".."Z").to_a.shuffle[0..rand(0..25)]
     if random_alphabet.size.even?
-      plugboard = random_alphabet.each_slice(2).to_a.map { |sub_array| sub_array.join("") }.join(",")
+      @plugboard = random_alphabet.each_slice(2).to_a.map { |sub_array| sub_array.join("") }.join(",")
     else
-      plugboard = random_alphabet[0..-2].each_slice(2).to_a.map { |sub_array| sub_array.join("") }.join(",")
+      @plugboard = random_alphabet[0..-2].each_slice(2).to_a.map { |sub_array| sub_array.join("") }.join(",")
     end
 
-    redirect_to :action => 'index', :rotor_numbers => rotor_numbers, :rotor_offsets => rotor_offsets, :reflector_number => reflector_number, :plugboard => plugboard
+    redirect_to :action => 'index', :rotor_numbers => @rotor_numbers, :rotor_offsets => @rotor_offsets, :reflector_number => @reflector_number, :plugboard => @plugboard
   end
 
   def load_settings
-    settings = params[:post][:settings].split(":")
-    rotor_numbers = settings[0]
-    rotor_offsets = settings[1]
-    reflector_number = settings[2]
-    plugboard = settings[3]
+    @settings = params[:post][:settings].split(":")
+    rotor_numbers = @settings[0]
+    rotor_offsets = @settings[1]
+    reflector_number = @settings[2]
+    plugboard = @settings[3]
 
     redirect_to :action => 'index', :rotor_numbers => rotor_numbers, :rotor_offsets => rotor_offsets, :reflector_number => reflector_number, :plugboard => plugboard
   end
