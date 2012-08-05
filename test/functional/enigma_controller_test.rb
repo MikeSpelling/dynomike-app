@@ -30,7 +30,7 @@ class EnigmaControllerTest < ActionController::TestCase
   end
 
   test "load setting" do
-    post :load_settings, :post => {:settings => "123:ABC:1:AB,CD"}
+    post :load_settings, :post => {:settings => "123-ABC-1-AB,CD"}
 
     settings = assigns(:settings)
     rotors = settings[0]
@@ -52,7 +52,7 @@ class EnigmaControllerTest < ActionController::TestCase
 
     enigma = EnigmaMachine.new([1,2,3], ["A", "B", "C"], 1, "AB,CD")
     assert_equal enigma.cipher("test"), assigns(:output), "Output ciphered correctly"
-    assert_equal "123:ABC:1:AB,CD", assigns(:settings), "Settings stored correctly"
+    assert_equal "123-ABC-1-AB,CD", assigns(:settings), "Settings stored correctly"
     assert_equal original_cipher_count+1, assigns(:cipher_count), "Cipher count incremented correctly"
     assert_equal original_cipher_count+1, CipherCount.all[0][:total], "New cipher count stored"
   end

@@ -6,7 +6,7 @@ class EnigmaController < ApplicationController
     @reflector_number = params[:reflector_number].nil? ? nil : params[:reflector_number]
     @plugboard = params[:plugboard].nil? ? nil : params[:plugboard]
 
-    @settings = "#{@rotor_numbers}:#{@rotor_offsets}:#{@reflector_number}:#{@plugboard}" unless @rotor_numbers.nil? and @rotor_offsets.nil? and @plugboard.nil?
+    @settings = "#{@rotor_numbers}-#{@rotor_offsets}-#{@reflector_number}-#{@plugboard}" unless @rotor_numbers.nil? and @rotor_offsets.nil? and @plugboard.nil?
 
     @cipher_count = CipherCount.all[0][:total]
   end
@@ -19,7 +19,7 @@ class EnigmaController < ApplicationController
     input_text = params[:post][:input_text]
     enigma = EnigmaMachine.new(rotor_numbers, rotor_offsets, reflector_number, plugboard)
     @output = enigma.cipher(input_text)
-    @settings = "#{params[:post][:rotor_numbers]}:#{params[:post][:rotor_offsets]}:#{params[:post][:reflector_number]}:#{params[:post][:plugboard]}"
+    @settings = "#{params[:post][:rotor_numbers]}-#{params[:post][:rotor_offsets]}-#{params[:post][:reflector_number]}-#{params[:post][:plugboard]}"
 
     @cipher_counter = CipherCount.all[0]
     @cipher_count = @cipher_counter[:total]+1
@@ -45,7 +45,7 @@ class EnigmaController < ApplicationController
   end
 
   def load_settings
-    @settings = params[:post][:settings].split(":")
+    @settings = params[:post][:settings].split("-")
     rotor_numbers = @settings[0]
     rotor_offsets = @settings[1]
     reflector_number = @settings[2]
