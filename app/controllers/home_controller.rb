@@ -26,7 +26,8 @@ class HomeController < ApplicationController
     @windDirection = `echo "#{weather_xml}" | grep -o "<current_condition>.*</current_condition>" | grep -o "<winddir16Point>.*</winddir16Point>" | cut -c 17- | sed 's/.................$//'`
     @maxTemp = `echo "#{weather_xml}" | grep -o "<tempMaxC>.*</tempMaxC>" | cut -c 11- | sed 's/...........$//'`
     @minTemp = `echo "#{weather_xml}" | grep -o "<tempMinC>.*</tempMinC>" | cut -c 11- | sed 's/...........$//'`
-    `echo "#{weather_xml}" | grep -o "<current_condition>.*</current_condition>" | grep -o "<weatherIconUrl>.*</weatherIconUrl>" | cut -c 26- | sed 's/....................$//' | xargs curl -s -o weather.png`
+    @weatherDesc = `echo "#{weather_xml}" | grep -o "<current_condition>.*</current_condition>" | grep -o "<weatherDesc>.*</weatherDesc>" | cut -c 23- | sed 's/.................$//'`
+    `echo "#{weather_xml}" | grep -o "<current_condition>.*</current_condition>" | grep -o "<weatherIconUrl>.*</weatherIconUrl>" | cut -c 26- | sed 's/....................$//' | xargs curl -s -o public/images/weather.png`
 
   end
 
