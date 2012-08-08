@@ -19,7 +19,7 @@ class HomeController < ApplicationController
 
     user_ip = request.env["HTTP_X_FORWARDED_FOR"]
     weather_xml = `curl -s "http://free.worldweatheronline.com/feed/weather.ashx?key=9d38708210104504120808&includeLocation=yes&q=#{user_ip}"`
-    @location = `echo "#{weather_xml}" | grep -o "<areaName>.*</areaName>" | cut -c 20- | sed 's/..............$//'`
+    @location = ""#`echo "#{weather_xml}" | grep -o "<areaName>.*</areaName>" | cut -c 20- | sed 's/..............$//'`
 
   end
 
