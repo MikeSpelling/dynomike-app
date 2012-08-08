@@ -149,7 +149,7 @@ li {
 	color: black;
 }
 #rightbar h2 a:hover{
-	color: black;
+	color: #3B5998;
 	background-color: inherit;
 }
 
@@ -208,6 +208,9 @@ li {
     font-size: 20px;
     text-decoration: none;
     cursor: pointer;
+}
+.blog h2 a:hover {
+    color: #3B5998;
 }
 
 #display-individual-blog h1 {
