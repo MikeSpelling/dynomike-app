@@ -1,0 +1,61 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="topbar">
+  <div id="topbar-content">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/enigma">Enigma</a></li>
+      <li><a href="/balls">Applet</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="container">
+
+  <div id="header">
+    <h1><a href="/">DynoMike</a></h1>
+  </div>
+
+  <div id="rightbar">
+    <h2>Weather</h2>
+    <p><%= @weatherDesc %></p>
+  </div>
+
+  <div id="content">
+    <p>Temperature: <%= @temp %></p>
+  </div>
+
+  <div id="footer">
+
+    <div id="footer-right">
+      <a href="https://www.webfaction.com/">
+        <img src="https://www.webfaction.com/images/webfaction-logo.png" alt="Webfaction logo" width="160" height="40"/>
+      </a>
+    </div>
+    <div class="g-plusone" data-width="450"></div>
+    <div class="fb-like" data-href="http://dynomike.co.uk" data-send="false" data-width="450" data-show-faces="false"></div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+    window.___gcfg = {lang: 'en-GB'};
+
+    (function() {
+        var po = document.createElement('script');
+        po.type = 'text/javascript';
+        po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(po, s);
+    })();
+</script>
