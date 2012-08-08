@@ -61,6 +61,13 @@ li {
 	z-index: 1;
 }
 
+#location {
+    color: white;
+    float: left;
+    margin-top: 12px;
+    padding-left: 15px;
+}
+
 #topbar-content {
 	width: 800px;
 	margin: auto;
@@ -251,4 +258,8 @@ li {
 
 .right-float {
     float: right;
+}
+
+.left-float {
+    float: left;
 }
