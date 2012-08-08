@@ -143,6 +143,15 @@ li {
 #rightbar h2 {
 	padding-bottom: 15px;
 }
+#rightbar h2 a {
+	text-decoration: none;
+	display: block;
+	color: black;
+}
+#rightbar h2 a:hover{
+	color: black;
+	background-color: inherit;
+}
 
 #rightbar #twitter a {
     text-decoration: none;
