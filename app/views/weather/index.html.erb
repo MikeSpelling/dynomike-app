@@ -22,7 +22,7 @@
 <div id="container">
 
   <div id="header">
-    <h1><a href="/">Weather - <%= @location %></a></h1>
+    <h1><a href="/">Weather in <%= @location %></a></h1>
   </div>
 
   <div id="rightbar">
@@ -34,8 +34,7 @@
   </div>
 
   <div id="content">
-    <p>Your IP is <%= @ip %> - this gives an approximate location of <%= @location %>, from
-      'free.worldweatheronline.com'</p>
+    <p>Your IP is <%= @ip %> - this gives an approximate location of <%= @location %> from <a href="free.worldweatheronline.com">free.worldweatheronline.com</a></p>
 
     <p>The weather in this area is:<br/>
       <br/>
@@ -44,7 +43,7 @@
       Min Temperature: <%= @minTemp %>°C<br/>
       <br/>
       Wind Speed: <%= @windSpeed %>MPH<br/>
-      Wind Direction: <%= @windSpeed %><br/>
+      Wind Direction: <%= @windDirection %><br/>
       <br/>
       Cloud Cover: <%= @cloudCover %><br/>
       Precipitation: <%= @precipitation %>mm</p>
