@@ -17,9 +17,9 @@ class HomeController < ApplicationController
     num_comments = @comments.size if num_comments > @comments.size
     @comments = @comments.reverse[0..num_comments-1] unless @comments.nil?
 
-    user_ip = request.env["HTTP_X_FORWARDED_FOR"]
+    user_ip = request.remote_ip
     weather_xml = `curl -s "http://free.worldweatheronline.com/feed/weather.ashx?key=9d38708210104504120808&includeLocation=yes&q=#{user_ip}"`
-    @location = ""#`echo "#{weather_xml}" | grep -o "<areaName>.*</areaName>" | cut -c 20- | sed 's/..............$//'`
+    @location = `echo "#{weather_xml}" | grep -o "<areaName>.*</areaName>" | cut -c 20- | sed 's/..............$//'`
 
   end
 
