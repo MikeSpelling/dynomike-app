@@ -14,6 +14,7 @@
       <li><a href="/">Home</a></li>
       <li><a href="/enigma">Enigma</a></li>
       <li><a href="/balls">Applet</a></li>
+      <li><a href="/weather">Weather</a></li>
       <li><a href="/blog">Blog</a></li>
     </ul>
   </div>
@@ -28,8 +29,9 @@
   <div id="rightbar">
     <h2>My Projects</h2>
     <ul>
-      <li><a href="/enigma">Enigma Machine implementation</a></li>
+      <li><a href="/enigma">Enigma</a></li>
       <li><a href="/balls">Java Applet</a></li>
+      <li><a href="/weather">Weather</a></li>
       <li><a href="/blog">My Blog</a></li>
     </ul>
     <hr/>
@@ -87,23 +89,28 @@
     </p>
 
     <p>
-      So far I'm working on 2 projects - 'Applet' and 'Enigma' as well as using this website to improve my ruby on rails
+      So far I'm working on 3 projects - <a href="balls">'Applet'</a>, <a href="enigma">'Enigma'</a> and <a href="weather">'Weather'</a> as well as using this website to improve my
+      ruby on rails
       knowledge and try some CSS (admittedly not great as yet!).
     </p>
 
     <p>
-      The first project is a Java applet in which I simply wanted to simulate gravity on 2D
+      The first project is a <a href="balls">Java applet</a> in which I simply wanted to simulate gravity on 2D
       ball objects and allow mouse clicks to apply force. It works alright so far although collisions between balls is
-      not perfect yet.
-      Eventually I'll get this into a working game.
+      not perfect yet. Eventually I'll get this into a working game.
     </p>
 
     <p>
-      The other project I'm working on is recreating the Enigma machine in software. This was a task I started at the
+      Another project I'm working on is recreating the <a href="enigma">Enigma machine</a> in software. This was a task
+      I started at the
       Software Craftsmanship
       2012 conference with Gavin James and Aidy Lewis. I took the design further - to allow for any number of rotors and
-      added a
-      'plugboard' which allows letters to be switched.
+      added a 'plugboard' which allows letters to be switched.
+    </p>
+
+    <p>
+      Finally there's the <a href="weather">Weather</a> app which gets your approximate location and uses an API to give
+      you the weather in your area.
     </p>
 
     <p>
@@ -120,7 +127,7 @@
             <a href="/home-comment/<%= comment.id %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>
             <span class="comment-footer"><%= comment.author %>
               (<%= comment.created_at.strftime("#{comment.created_at.day.ordinalize} %B  %Y ") %>)</span><br/>
-          </div> 
+          </div>
           <br/>
       <% end %>
       <br/>
@@ -139,7 +146,7 @@
           <p>Comment:<br/>
             <textarea cols="63" id="post_text" name="post[text]" rows="8"></textarea></p>
 
-          <p><input name="commit" type="submit" value="Comment" /></p>
+          <p><input name="commit" type="submit" value="Comment"/></p>
       <% end %>
     </div>
   </div>
