@@ -1,3 +1,22 @@
 // Place all the styles related to the weather controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+table.weather-table {
+ margin: 0.2em 0.2em 0.2em 0.2em;
+ background: whitesmoke;
+ border-collapse: collapse;
+}
+table.weather-table th, table.weather-table td {
+ border: 1px gainsboro solid;
+ padding: 0.5em;
+}
+table.weather-table th {
+ background: gainsboro;
+ text-align: left;
+ padding-right: 10em;
+}
+table.weather-table caption {
+ margin-left: inherit;
+ margin-right: inherit;
+}

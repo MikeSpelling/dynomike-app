@@ -27,25 +27,53 @@
 
   <div id="rightbar">
     <h2>Conditions</h2>
-    <img src="<%= @weatherImgSrc %>" alt="<%= @weatherDesc %>"/>
-    <br/>
-    <p><%= @weatherDesc %></p>
+
+    <p>
+      <img class="left-float" src="<%= @weatherImgSrc %>" alt="<%= @weatherDesc %>"/>
+      <%= @weatherDesc %>
+    </p>
   </div>
 
   <div id="content">
-    <p>Your IP is <%= @ip %> - this gives an approximate location of <%= @location %> from <a href="http://www.worldweatheronline.com/free-weather-feed.aspx">www.worldweatheronline.com</a></p>
+    <p>Your IP is <%= @ip %> - this gives an approximate location of <%= @location %> from
+      <a href="http://www.worldweatheronline.com/free-weather-feed.aspx">www.worldweatheronline.com</a></p>
 
     <p>The weather in this area is:<br/>
-      <br/>
-      Current Temperature: <%= @temp %>°C<br/>
-      Max Temperature: <%= @maxTemp %>°C<br/>
-      Min Temperature: <%= @minTemp %>°C<br/>
-      <br/>
-      Wind Speed: <%= @windSpeed %>MPH<br/>
-      Wind Direction: <%= @windDirection %><br/>
-      <br/>
-      Cloud Cover: <%= @cloudCover %><br/>
-      Precipitation: <%= @precipitation %>mm</p>
+    
+    <table class="weather-table">
+      <tr>
+        <th>Stat</th>
+        <th>Value</th>
+      </tr>
+      <tr>
+        <td>Current Temperature</td>
+        <td><%= @temp %>°C</td>
+      </tr>
+      <tr>
+        <td>Max Temperature</td>
+        <td><%= @maxTemp %>°C</td>
+      </tr>
+      <tr>
+        <td>Min Temperature</td>
+        <td><%= @minTemp %>°C</td>
+      </tr>
+      <tr>
+        <td>Wind Speed</td>
+        <td><%= @windSpeed %>mph</td>
+      </tr>
+      <tr>
+        <td>Wind Direction</td>
+        <td><%= @windDirection %></td>
+      </tr>
+      <tr>
+        <td>Cloud Cover</td>
+        <td><%= @cloudCover %>%</td>
+      </tr>
+      <tr>
+        <td>Precipitation</td>
+        <td><%= @precipitation %>mm</td>
+      </tr>
+    </table>
   </div>
 
   <div id="footer">
