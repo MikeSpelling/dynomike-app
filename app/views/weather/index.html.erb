@@ -22,16 +22,28 @@
 <div id="container">
 
   <div id="header">
-    <h1><a href="/">DynoMike</a></h1>
+    <h1><a href="/">Weather - <%= @location %></a></h1>
   </div>
 
   <div id="rightbar">
-    <h2>Weather</h2>
+    <h2>Conditions</h2>
     <p><%= @weatherDesc %></p>
+    <br/>
+    <img src="<%= @weatherImgSrc %>" alt="<%= @weatherDesc %>" />
   </div>
 
   <div id="content">
-    <p>Temperature: <%= @temp %></p>
+    <p>Your IP is <%= @ip %> - this gives an approximate location of <%= @location %>, from 'free.worldweatheronline.com'</p>
+    <p>The weather in this area is:</p><br/>
+    <p>Current Temperature: <%= @temp %>°C</p>
+    <p>Max Temperature: <%= @maxTemp %>°C</p>
+    <p>Min Temperature: <%= @minTemp %>°C</p>
+    <br />
+    <p>Wind Speed: <%= @windSpeed %>MPH</p>
+    <p>Wind Direction: <%= @windSpeed %></p>
+    <br/>
+    <p>Cloud Cover: <%= @cloudCover %></p>
+    <p>Precipitation: <%= @precipitation %>mm</p>
   </div>
 
   <div id="footer">
