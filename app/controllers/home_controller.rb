@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
 
-  caches_page :index
   before_filter :authenticate, :except => [:index, :comment]
 
   def authenticate
