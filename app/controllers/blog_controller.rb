@@ -16,6 +16,7 @@ class BlogController < ApplicationController
 
   def individual_blog
     @blogs = Blog.all
+    @blogs.sort! { |x, y| y.updated_at <=> x.updated_at }
     @blog = Blog.find(params[:id])
 
     @comments = Comment.all
