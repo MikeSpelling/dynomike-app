@@ -193,6 +193,11 @@ li {
 #display-blogs {
     margin: 10px;
 }
+#display-blogs h1 {
+    color: black;
+    font-size: 20px;
+    line-height: 50px;
+}
 
 .blog {
     line-height: 15px;
@@ -200,8 +205,12 @@ li {
     border: 1px groove #333333;
 }
 .blog a {
-    color: gray;
-    font-size: 10px;
+    color: #3B5998;
+    text-decoration: none;
+}
+.blog a:hover {
+    color: #f5f5f5;
+    background-color: #3B5998;
 }
 .blog h2 a {
     color: black;
@@ -211,16 +220,13 @@ li {
 }
 .blog h2 a:hover {
     color: #3B5998;
+    background-color: inherit;
 }
-
-#display-individual-blog h1 {
-    color: black;
-    font-size: 20px;
-    line-height: 50px;
-}
-#display-individual-blog a {
-    color: gray;
-    font-size: 10px;
+.blog h3 {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    margin: 0px;
 }
 
 #new-blog h2 {
@@ -275,4 +281,25 @@ li {
 .left-float {
     float: left;
     padding-right: 5px;
+}
+
+.code {
+    font-family: "Courier New", "Lucida Sans", Arial, Sans-serif;
+    font-size: 0.9em;
+    border: 1px solid #333333;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
