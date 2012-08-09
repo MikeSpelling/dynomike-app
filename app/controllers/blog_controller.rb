@@ -15,9 +15,10 @@ class BlogController < ApplicationController
   end
 
   def individual_blog
+    id = params[:id_title].split("-")[0]
     @blogs = Blog.all
     @blogs.sort! { |x, y| y.updated_at <=> x.updated_at }
-    @blog = Blog.find(params[:id])
+    @blog = Blog.find(id)
 
     @comments = Comment.all
     @comments.select! { |comment| comment.blog_id == @blog.id }
@@ -54,8 +55,8 @@ class BlogController < ApplicationController
       redirect_to :action => :edit_blog, :id => @blog.id, :error => @blog.errors.full_messages.first, :title => params[:post][:title], :text => params[:post][:text]
     else
       expire_page :action => :index
-      expire_page :action => :individual_blog, :id => @blog.id
-      redirect_to :action => :individual_blog, :id => @blog.id
+      expire_page :action => :individual_blog, :id_title => @blog.id
+      redirect_to :action => :individual_blog, :id_title => @blog.id
     end
   end
 
@@ -74,7 +75,7 @@ class BlogController < ApplicationController
     @blogs = Blog.all
 
     expire_page :action => :index
-    expire_page :action => :individual_blog, :id => params[:id]
+    expire_page :action => :individual_blog, :id_title => params[:id]
     redirect_to :action => 'index'
   end
 
