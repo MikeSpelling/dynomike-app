@@ -26,20 +26,7 @@
     <h1><a href="/blog">Blogs</a></h1>
   </div>
 
-  <div id="rightbar">
-    <h2><a href="/blog">Blogs</a></h2>
-    <ul>
-      <% unless @blogs.nil? %>
-          <% @blogs.each do |blog| %>
-              <li><a href="/blog/<%= blog.id %>-<%= blog.title %>"><%= blog.title %></a></li>
-          <% end %>
-      <% end %>
-    </ul>
-    <hr/>
-    <br/>
-  </div>
-
-  <div id="content">
+  <div id="content-norightbar">
     <div id="display-blogs" class="blog">
       <h1><%= @blog.title %>
         <span class="right-float"><%= @blog.updated_at.strftime("#{@blog.updated_at.day.ordinalize} %B  %Y ") %></span>
@@ -69,14 +56,15 @@
 
     <div id="add-comment">
       <h2>Add a Comment</h2>
+      <br/>
       <%= form_for :post, :url => "/blog/#{@blog.id}/comment" do |f| %>
           <% if @error %>
               <script type="text/javascript">alert("<%= @error %>");</script>
           <% end %>
-          <p>Author: <input id="post_author" name="post[author]" size="81" type="text" value="<%= @comment_author %>"/> <br/></p>
+          <p>Author: <input id="post_author" name="post[author]" size="140" type="text" value="<%= @comment_author %>"/> <br/></p>
 
           <p>Comment:<br/>
-            <textarea cols="65" id="post_text" name="post[text]" rows="8"><%= @comment_text %></textarea></p>
+            <textarea cols="100" id="post_text" name="post[text]" rows="8"><%= @comment_text %></textarea></p>
           <input id="blog_id" name="post[blog_id]" type="hidden" value="<%= @blog.id %>"/>
 
           <p><input name="commit" type="submit" value="Comment"/></p>

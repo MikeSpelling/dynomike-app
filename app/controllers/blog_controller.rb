@@ -86,8 +86,8 @@ class BlogController < ApplicationController
     if @comment.errors.any?
       redirect_to :action => :individual_blog, :id => params[:id], :error => @comment.errors.full_messages.first, :author => params[:post][:author], :text => params[:post][:text]
     else
-      expire_page :action => :individual_blog, :id => params[:id]
-      redirect_to :action => :individual_blog, :id => params[:id]
+      expire_page :action => :individual_blog, :id_title => params[:id]
+      redirect_to :action => :individual_blog, :id_title => params[:id]
     end
   end
 
@@ -96,8 +96,8 @@ class BlogController < ApplicationController
     @comment.destroy
     @comment = Comment.all
 
-    expire_page :action => :individual_blog, :id => params[:blog_id]
-    redirect_to :action => :individual_blog, :id => params[:blog_id]
+    expire_page :action => :individual_blog, :id_title => params[:blog_id]
+    redirect_to :action => :individual_blog, :id_title => params[:blog_id]
   end
 
 end
