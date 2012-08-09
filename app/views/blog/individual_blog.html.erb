@@ -31,7 +31,7 @@
     <ul>
       <% unless @blogs.nil? %>
           <% @blogs.each do |blog| %>
-              <li><a href="/blog/<%= blog.id %>"><%= blog.title %></a></li>
+              <li><a href="/blog/<%= blog.id %>-<%= blog.title %>"><%= blog.title %></a></li>
           <% end %>
       <% end %>
     </ul>

@@ -6,7 +6,7 @@ DynomikeApp::Application.routes.draw do
   get "enigma" => "enigma#index"
   get "balls" => "balls#index"
   get "blog" => "blog#index"
-  get "blog/:id" => "blog#individual_blog"
+  get "blog/:id_title" => "blog#individual_blog"
   get "blog/:id/edit" => "blog#edit_blog"
   get "weather" => "weather#index"
 
