@@ -9,14 +9,14 @@ class WeatherController < ApplicationController
 
     @location = weather_xml.xpath("//data/nearest_area/areaName").text
     @temp = weather_xml.xpath("//data/current_condition/temp_C").text
-    @windSpeed = weather_xml.xpath("//data/current_condition/windspeedMiles").text
-    @windDirection = weather_xml.xpath("//data/current_condition/winddir16Point").text
-    @weatherDesc = weather_xml.xpath("//data/weather/tempMinC").text
-    @weatherImgSrc = weather_xml.xpath("//data/current_condition/weatherIconUrl").text
+    @wind_speed = weather_xml.xpath("//data/current_condition/windspeedMiles").text
+    @wind_direction = weather_xml.xpath("//data/current_condition/winddir16Point").text
+    @weather_description = weather_xml.xpath("//data/current_condition/weatherDesc").text
+    @weather_image_src = weather_xml.xpath("//data/current_condition/weatherIconUrl").text
     @precipitation = weather_xml.xpath("//data/current_condition/precipMM").text
-    @cloudCover = weather_xml.xpath("//data/current_condition/cloudcover").text
-    @maxTemp = weather_xml.xpath("//data/weather/tempMaxC").text
-    @minTemp = weather_xml.xpath("//data/weather/tempMinC").text
+    @cloud_cover = weather_xml.xpath("//data/current_condition/cloudcover").text
+    @max_temp = weather_xml.xpath("//data/weather/tempMaxC").text
+    @min_temp = weather_xml.xpath("//data/weather/tempMinC").text
   end
 
 end
