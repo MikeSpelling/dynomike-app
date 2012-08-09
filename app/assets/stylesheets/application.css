@@ -119,6 +119,9 @@ li {
 	font-size: 34px;
     text-decoration: none;
 }
+#header h1 a:hover {
+	color: graytext;
+}
 
 #rightbar {
 	float: right;
@@ -168,6 +171,11 @@ li {
 }
 #content p {
 	padding-bottom: 15px;
+}
+
+#content-norightbar {
+	line-height: 18px;
+	padding: 25px;
 }
 
 #display-comments {
