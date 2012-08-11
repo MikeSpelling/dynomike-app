@@ -61,10 +61,11 @@
           <% if @error %>
               <script type="text/javascript">alert("<%= @error %>");</script>
           <% end %>
-          <p>Author: <input id="post_author" name="post[author]" size="140" type="text" value="<%= @comment_author %>"/> <br/></p>
+          <p>Author: <br/>
+            <input id="post_author" name="post[author]" type="text" value="<%= @comment_author %>"/> <br/></p>
 
           <p>Comment:<br/>
-            <textarea cols="100" id="post_text" name="post[text]" rows="8"><%= @comment_text %></textarea></p>
+            <textarea id="post_text" name="post[text]" rows="8"><%= @comment_text %></textarea></p>
           <input id="blog_id" name="post[blog_id]" type="hidden" value="<%= @blog.id %>"/>
 
           <p><input name="commit" type="submit" value="Comment"/></p>

@@ -180,6 +180,13 @@ li {
 }
 #display-comments h2 {
 }
+
+#post_text {
+    width: 95%
+}
+#post_author {
+    width: 95%
+}
     
 .comment {
     line-height: 15px;
