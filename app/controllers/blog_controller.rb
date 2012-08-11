@@ -55,8 +55,8 @@ class BlogController < ApplicationController
       redirect_to :action => :edit_blog, :id => @blog.id, :error => @blog.errors.full_messages.first, :title => params[:post][:title], :text => params[:post][:text]
     else
       expire_page :action => :index
-      expire_page :action => :individual_blog, :id_title => @blog.id
-      redirect_to :action => :individual_blog, :id_title => @blog.id
+      expire_page :action => :individual_blog, :id_title => "#{@blog.id}-#{@blog.title}"
+      redirect_to :action => :individual_blog, :id_title => "#{@blog.id}-#{@blog.title}"
     end
   end
 
@@ -71,23 +71,26 @@ class BlogController < ApplicationController
 
   def destroy
     @blog = Blog.find(params[:id])
+    title = @blog.title
     @blog.destroy
     @blogs = Blog.all
 
     expire_page :action => :index
-    expire_page :action => :individual_blog, :id_title => params[:id]
+    expire_page :action => :individual_blog, :id_title => "#{params[:id]}-#{title}"
     redirect_to :action => 'index'
   end
 
   def post_comment
+    @blog = Blog.find(params[:id])
+    title = @blog.title
     @comment = Comment.new(params[:post])
     @comment.save
 
     if @comment.errors.any?
-      redirect_to :action => :individual_blog, :id => params[:id], :error => @comment.errors.full_messages.first, :author => params[:post][:author], :text => params[:post][:text]
+      redirect_to :action => :individual_blog, :id => "#{params[:id]}-#{title}", :error => @comment.errors.full_messages.first, :author => params[:post][:author], :text => params[:post][:text]
     else
-      expire_page :action => :individual_blog, :id_title => params[:id]
-      redirect_to :action => :individual_blog, :id_title => params[:id]
+      expire_page :action => :individual_blog, :id_title => "#{params[:id]}-#{title}"
+      redirect_to :action => :individual_blog, :id_title => "#{params[:id]}-#{title}"
     end
   end
 
@@ -96,8 +99,11 @@ class BlogController < ApplicationController
     @comment.destroy
     @comment = Comment.all
 
-    expire_page :action => :individual_blog, :id_title => params[:blog_id]
-    redirect_to :action => :individual_blog, :id_title => params[:blog_id]
+    @blog = Blog.find(params[:blog_id])
+    title = @blog.title
+
+    expire_page :action => :individual_blog, :id_title => "#{params[:blog_id]}-#{title}"
+    redirect_to :action => :individual_blog, :id_title => "#{params[:blog_id]}-#{title}"
   end
 
 end
