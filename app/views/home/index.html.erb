@@ -141,10 +141,11 @@
                   <script type="text/javascript">alert("<%= @comment.errors.full_messages.first %>");</script>
               <% end %>
           <% end %>
-          <p>Author: <input id="post_author" name="post[author]" size="81" type="text"/> <br/></p>
+          <p>Author: <br/>
+            <input id="post_author" name="post[author]" type="text"/> <br/></p>
 
           <p>Comment:<br/>
-            <textarea cols="63" id="post_text" name="post[text]" rows="8"></textarea></p>
+            <textarea id="post_text" name="post[text]" rows="8"></textarea></p>
 
           <p><input name="commit" type="submit" value="Comment"/></p>
       <% end %>
