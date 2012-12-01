@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DynoMike</title>
+  <link href="/assets/application-327163bd98253bda53828614c2361e6f.css" media="all" rel="stylesheet" type="text/css" />
+  <script src="/assets/application-c3964a07ec879db7ad25eb35f69d79d2.js" type="text/javascript"></script>
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="I75tiIxPMOcgDLugFkxzPdxlCIyVTBYhUtyzxotpkEk=" name="csrf-token" />
+  <meta name="msvalidate.01" content="9B3EC3059C783C1CF76F982938F01F00" />
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33341444-1']);
+    _gaq.push(['_setDomainName', 'dynomike.co.uk']);
+    _gaq.push(['_trackPageview']);
+ 
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+  </script>
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div id="topbar">
+  <div id="topbar-content">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/enigma">Enigma</a></li>
+      <li><a href="/balls">Applet</a></li>
+      <li><a href="/weather">Weather</a></li>
+      <li><a href="/blog">Blog</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="container">
+
+  <div id="header">
+    <h1><a href="/blog">Blogs</a></h1>
+  </div>
+
+  <div id="content-norightbar">
+    <div id="display-blogs" class="blog">
+      <h1>GeekTool
+        <span class="right-float">7th November  2012 </span>
+      </h1>
+
+      <p>So I downloaded GeekTool from the App Store the other day which allows you to, among other things, place 'Geeklets' (the output of bash commands) on your desktop. What ensued was a flurry of bash scripts to achieve various things.  A great way to improve your bash skills and also put some useful information on your desktop! This is what mine looks like:<br/><br/><img src="/images/GeekToolDesktop.png" width="100%" alt="GeekTool desktop" class="center" /><br/><br/>And heres a list of some of the useful commands I've discovered:<br/><br/><h3>Tube Status</h3><br/>A simple script to get the current tube status of all lines:<br/><br/><div class="code">curl -s http://www.tfl.gov.uk/tfl/livetravelnews/realtime/tube/default.html | grep -C 2 "class=\"status" | grep -o "&gt.*&lt" | sed 's/^.\(.*\).$/\1/' | sed 's/\&ampamp;/\&/g' | awk 'BEGIN{i=1}{line[i++]=$0}END{j=1; while (j&lti) {print line[j] ":     \t" line[j+1]; j+=2}}'</div><br/>The output looks like:<br/>Bakerloo:&nbsp&nbsp&nbsp&nbspGood service<br/>Central:&nbsp&nbsp&nbsp&nbspGood service<br/>Circle:&nbsp&nbsp&nbsp&nbspGood service<br/>District:&nbsp&nbsp&nbsp&nbspGood service<br/>DLR:&nbsp&nbsp&nbsp&nbspGood service<br/>H'smith & City:&nbsp&nbsp&nbsp&nbspMinor delays<br/>Jubilee:&nbsp&nbsp&nbsp&nbspGood service<br/>Metropolitan: &nbsp&nbsp&nbsp&nbspGood service<br/>Northern:&nbsp&nbsp&nbsp&nbspGood service<br/>Overground:&nbsp&nbsp&nbsp&nbspGood service<br/>Piccadilly:&nbsp&nbsp&nbsp&nbspGood service<br/>Victoria:&nbsp&nbsp&nbsp&nbspGood service<br/>Waterloo & City:&nbsp&nbsp&nbsp&nbspGood service<br/><br/>This just curls the <a href="http://www.tfl.gov.uk/">TFL website</a> and greps for the tube status.<br/><br/><h3>Weather</h3><br/>An image can be polled from <a href="http://www.weather.com/weather/right-now">www.weather.com/weather/right-now</a> to a local file and a seperate 'Geeklet' can be used to display the image, refreshing periodically:<br/><br/><div class="code">geocode=`curl -s "http://www.ip2location.com/" | grep "chkWeather" | sed '3,3!d' | grep -o "(.*)" | cut -c2-9` ; curl -s "http://www.weather.com/weather/right-now/$geocode" | grep "\"wx-weather-icon\"" | grep -o "src=\".*.png\"" | cut -c 6- | sed 's/.$//' | xargs curl -s -o /tmp/weather.png</div><br/>This is a two stage process. First I curl <a href="http://www.ip2location.com">www.ip2location.com</a> to get the geocode, then I curl <a href="http://www.weather.com/weather/right-now">www.weather.com/weather/right-now/$geocode</a> for that geocode and grep for the image - outputting it to /tmp/weather.png:<br/><img class="center" src="http://s.imwx.com/v.20120328.084208//img/wxicon/120/34.png" alt="Sunshine" /><br/><br/>To get a short description of the current weather along with the temperature.<br/><br/><div class="code">geocode=`curl -s "http://www.ip2location.com/" | grep "chkWeather" | sed '3,3!d' | grep -o "(.*)" | cut -c2-9` ; curl -s "http://weather.yahooapis.com/forecastrss?p=$geocode&u=c" | grep -A 1 "Current Conditions" | sed  '1,1d' | sed 's/ C<.*/&deg;C/'</div><br/>Output looks like:<br/>Partly Cloudy, 22&deg;C<br/><br/>Again, this is done in two stages firstly getting the geocode, then using it in the yahoo weather API to get the current conditions. I also have a geeklet nearby showing the current location using:<br/><br/><div class="code">curl -s "http://freegeoip.net/xml/" | grep "&ltCity&gt" | cut -c 11- | sed 's/.......$//'</div><br/>Output: London<br/><br/><h3>News</h3><br/>To show the current BBC news headline and summary I have 2 geeklets. The headline uses:<br/><div class="code">curl -s "http://www.bbc.co.uk/news/" | grep -A 1 "splash-header" | sed 's/\&amp;quot;/\"/g' | sed "s/\&amp;#039;/'/g" | grep -o ">[^<>]*<" | sed 's/.*>//g' | sed 's/<.*//g'</div><br/><br/>The summary uses:<br/><div class="code">curl -s "http://www.bbc.co.uk/news/" | grep -E -B 50 -m 1 "see-also|secondary-story-header" | sed 's/\&amp;quot;/\"/g' | sed "s/\&amp;#039;/'/g" | grep "&ltp&gt" | sed 's/^[^&gt]*&gt//g'</div><br/><h3>Tweets</h3><br/>To get the tweets of a particular user (replacing XXX with user name):<br/><div class="code">curl -s https://twitter.com/XXX | grep -A 1 -m 1 "&ltp class=\"js-tweet-text\">" | sed '2,2!d' | sed 's/&lt[^&lt&gt]*&gt//g' | sed 's/^[ ]*//g' | sed 's/\&amp;quot;/\"/g' | sed "s/&amp;#39;/'/g" | sed "s/\&amp;amp;/\&amp;/g"</div><br/>Note this will only work if the user shares there tweets publicly.<br/><br/><h3>System information</h3><br/>Other than these I just have a few simple commands to get some useful information. Good places to display these are to the left and right of the bottom dock on a mac.<br/><br/>Time since computer started:<br/><div class="code">uptime | awk '{sub(":", "h ", $3); sub(",", "min", $3); print "Uptime: " $3}'</div><br/>Output looks like:<br/>Uptime: 7h 25min<br/><br/>Memory used:<br/><div class="code">top -l 1 | awk '/PhysMem/ {print $8, $9, $10, $11}';</div><br/>Output looks like:<br/>8021M used, 169M free.<br/><br/>Calendar:<br/><div class="code">cal=`cal`; today=`date "+%e"`; echo -en "${cal/${today}/\033[1;32m${today}\033[0m}";</div><br/>The output of this looks great in terminal but I found it wasn't displayed correctly in GeekTool so I haven't used it. Any tips appreciated!<br/><br/>So there are my main bash commands which make for an interesting desktop. I also put them as functions in my .bash_profile so that I can call them up at the terminal. Feel free to share yours!<br/><br/>Cheers, <br/><br/>Mike</p>
+      <a class="right-float" href="/blog/5" data-confirm="Are you sure?" data-method="delete" rel="nofollow">Delete</a>
+      <a href="/blog/5/edit">Edit</a>
+      <br/>
+    </div>
+    <hr/>
+    <br/>
+
+    <div id="display-comments">
+      <h2>Comments</h2>
+      <br/>
+    </div>
+
+    <div id="add-comment">
+      <h2>Add a Comment</h2>
+      <br/>
+      <form accept-charset="UTF-8" action="/blog/5/comment" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="I75tiIxPMOcgDLugFkxzPdxlCIyVTBYhUtyzxotpkEk=" /></div>
+          <p>Author: <br/>
+            <input id="post_author" name="post[author]" type="text" value=""/> <br/></p>
+
+          <p>Comment:<br/>
+            <textarea id="post_text" name="post[text]" rows="8"></textarea></p>
+          <input id="blog_id" name="post[blog_id]" type="hidden" value="5"/>
+
+          <p><input name="commit" type="submit" value="Comment"/></p>
+</form>    </div>
+
+  </div>
+
+  <div id="footer">
+    <div id="footer-right">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/enigma">Enigma</a></li>
+        <li><a href="/balls">Applet</a></li>
+        <li><a href="/weather">Weather</a></li>
+        <li><a href="/blog">Blog</a></li>
+      </ul>
+    </div>
+
+    <div class="g-plusone" data-width="450"></div>
+    <div class="fb-like" data-href="http://dynomike.co.uk/enigma" data-send="false" data-width="450" data-show-faces="false"></div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+    window.___gcfg = {lang: 'en-GB'};
+
+    (function() {
+        var po = document.createElement('script');
+        po.type = 'text/javascript';
+        po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(po, s);
+    })();
+</script>
+
+
+</body>
+</html>
